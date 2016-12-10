@@ -34,9 +34,15 @@ public class UsuarioControle extends Application {
 	public Response verificarUsuario(Usuario usuario) {
 		
 		if (validacao.validarLogin(usuario)) {
-			return Response.status(Response.Status.OK).entity("{\"status\": true}").header("Access-Control-Allow-Origin", "*").header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept").build();
+			return Response.status(Response.Status.OK).entity("{\"status\": true}").build();
 		}
-		return Response.status(Response.Status.UNAUTHORIZED).entity("{\"status\": false}").header("Access-Control-Allow-Origin", "*").header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept").build();
+		return Response.status(Response.Status.UNAUTHORIZED).entity("{\"status\": false}").build();
+	}
+	
+	@GET
+	@Path("/hello")
+	public String getHello() {
+		return "Hello Web Service";
 	}
 
 	@POST

@@ -8,22 +8,21 @@ import modelo.Usuario;
 public class Validacao {
 
 	public boolean verificarEmail(Usuario usuario){
-		return ListaUsuario.usuarios.stream().anyMatch(u -> u.getEmail().equals(usuario.getEmail()));
+		return ListaUsuario.usuarios.stream().anyMatch(user -> user.getEmail().equals(usuario.getEmail()));
 	}
 	
 	public boolean verificarCPF(Usuario usuario){
-		return ListaUsuario.usuarios.stream().anyMatch(u -> u.getCpf().equals(usuario.getCpf()));
+		return ListaUsuario.usuarios.stream().anyMatch(user -> user.getCpf().equals(usuario.getCpf()));
 	}
 	
 	public boolean verificarCPFValido(Usuario usuario){
-		return usuario.getCpf().matches("(^\\d{3}\\x2E\\d{3}\\x2E\\d{3}\\x2D\\d{2}$)");
+		return usuario.getCpf().matches("(^[0-9]{3}.?[0-9]{3}.?[0-9]{3}-?[0-9]{2})");
 	}
-	
 	
 
 	public boolean validarLogin(Usuario usuario){
-		if(ListaUsuario.usuarios.stream().anyMatch(u -> u.getEmail().equals(usuario.getEmail()))
-				&& ListaUsuario.usuarios.stream().anyMatch(u -> u.getSenha().equals(usuario.getSenha())))
+		if(ListaUsuario.usuarios.stream().anyMatch(user -> user.getEmail().equals(usuario.getEmail()))
+				&& ListaUsuario.usuarios.stream().anyMatch(user -> user.getSenha().equals(usuario.getSenha())))
 				
 		return true;
 	 return false;
